@@ -41,6 +41,8 @@ function calculateBonusByProfit(index, total, seller) {
  */
 function analyzeSalesData(data, options) {
     // @TODO: Проверка входных данных
+    const { calculateRevenue, calculateBonus } = options;
+    
     if (!data) {
         throw new Error(`Исходный датасет ${data} не найден!`);
     }
@@ -63,7 +65,13 @@ function analyzeSalesData(data, options) {
         throw new Error(`Проверьте данные о чеках!`);
     }
     // @TODO: Проверка наличия опций
-    const { calculateRevenue, calculateBonus } = options;
+    if (
+        !options
+        || typeof calculateRevenue !== "function"
+        || typeof calculateBonus !== "function"
+    ) {
+        throw new Error("Переменные не являются функциями!");
+    }
 
     // @TODO: Подготовка промежуточных данных для сбора статистики
     const sellerStats = data.sellers.map(seller => ({
