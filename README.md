@@ -1,3 +1,5 @@
+https://github.com/EvgeniiSapozhnikov/sales-bonus/actions
+
 # Проектная работа "Пряники"
 5 спринт, модуль JS
 
